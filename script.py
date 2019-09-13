@@ -54,8 +54,6 @@ def select_the_best_test_data(selectedSet, candidateSet, totalNumberOfCandidates
             best_distance = min_candidate_distance
     return best_data
 
-
-chunk = (1 / 100) * simulations
 for x in range(simulations):
     initial_test_data = tuple(uniform(input_min, input_max) for d in range(dimension))
     selected_set = [initial_test_data]
@@ -71,8 +69,7 @@ for x in range(simulations):
         reveal_failure = test_program(failure_point, test_data, failure_region_length)
         selected_set.append(test_data)
         counter = counter + 1
-    if x % chunk == 0:
-        print('=', end='')
+    print(counter)
     total_f_measure = total_f_measure + counter
 
 avg_f_measure = total_f_measure / simulations
